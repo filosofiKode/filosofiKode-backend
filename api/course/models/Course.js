@@ -1,4 +1,5 @@
 'use strict';
+const slug = require('slug')
 
 /**
  * Lifecycle callbacks for the `Course` model.
@@ -30,7 +31,11 @@ module.exports = {
 
   // Before creating a value.
   // Fired before an `insert` query.
-  // beforeCreate: async (model) => {},
+  beforeCreate: async (model) => {
+    model.slug = slug(model.title, {
+      lower: true
+    })
+  },
 
   // After creating a value.
   // Fired after an `insert` query.
