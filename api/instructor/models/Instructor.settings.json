@@ -1,0 +1,39 @@
+{
+  "connection": "default",
+  "collectionName": "instructor",
+  "info": {
+    "name": "instructor",
+    "description": "Instructors"
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "default": "",
+      "unique": true,
+      "type": "string",
+      "required": true
+    },
+    "bio": {
+      "default": "",
+      "type": "text"
+    },
+    "email": {
+      "default": "",
+      "unique": true,
+      "type": "email",
+      "required": true
+    },
+    "website": {
+      "default": "",
+      "unique": true,
+      "type": "string"
+    },
+    "courses": {
+      "collection": "course",
+      "dominant": true,
+      "via": "instructors"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "connection": "default",
+  "collectionName": "course",
+  "info": {
+    "name": "course",
+    "description": "Courses"
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "default": "",
+      "unique": true,
+      "minLength": 5,
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "default": "",
+      "minLength": 10,
+      "type": "text",
+      "required": true
+    },
+    "cover": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    },
+    "instructors": {
+      "collection": "instructor",
+      "via": "courses"
+    },
+    "lessons": {
+      "collection": "lesson",
+      "via": "course"
+    },
+    "slug": {
+      "default": "",
+      "unique": true,
+      "type": "string"
+    }
+  }
+}

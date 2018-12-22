@@ -1,0 +1,41 @@
+{
+  "connection": "default",
+  "collectionName": "lesson",
+  "info": {
+    "name": "lesson",
+    "description": "Lessons"
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "default": "",
+      "unique": true,
+      "minLength": 5,
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "default": "",
+      "unique": true,
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "default": "",
+      "minLength": 10,
+      "type": "text",
+      "required": true
+    },
+    "videoUrl": {
+      "default": "",
+      "unique": true,
+      "type": "string"
+    },
+    "course": {
+      "model": "course",
+      "via": "lessons"
+    }
+  }
+}

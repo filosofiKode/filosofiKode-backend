@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/instructors",
+      "handler": "Instructor.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/instructors/count",
+      "handler": "Instructor.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/instructors/:_id",
+      "handler": "Instructor.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/instructors",
+      "handler": "Instructor.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/instructors/:_id",
+      "handler": "Instructor.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/instructors/:_id",
+      "handler": "Instructor.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
