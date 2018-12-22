@@ -6,6 +6,7 @@ type Course {
   title: String!
   description: String!
   cover: UploadFile
+  slug: String
   instructors(sort: String, limit: Int, start: Int, where: JSON): [Instructor]
   lessons(sort: String, limit: Int, start: Int, where: JSON): [Lesson]
 }
@@ -40,6 +41,11 @@ type CourseConnectionDescription {
   connection: CourseConnection
 }
 
+type CourseConnectionSlug {
+  key: String
+  connection: CourseConnection
+}
+
 type CourseConnectionTitle {
   key: String
   connection: CourseConnection
@@ -57,6 +63,7 @@ type CourseGroupBy {
   title: [CourseConnectionTitle]
   description: [CourseConnectionDescription]
   cover: [CourseConnectionCover]
+  slug: [CourseConnectionSlug]
 }
 
 input CourseInput {
@@ -65,6 +72,7 @@ input CourseInput {
   cover: ID
   instructors: [ID]
   lessons: [ID]
+  slug: String
 }
 
 input createCourseInput {
@@ -330,7 +338,7 @@ input LessonInput {
   course: ID
 }
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Course | createCoursePayload | updateCoursePayload | deleteCoursePayload | CourseConnection | CourseAggregator | CourseGroupBy | CourseConnection_id | CourseConnectionCreatedAt | CourseConnectionUpdatedAt | CourseConnectionTitle | CourseConnectionDescription | CourseConnectionCover | Instructor | createInstructorPayload | updateInstructorPayload | deleteInstructorPayload | InstructorConnection | InstructorAggregator | InstructorGroupBy | InstructorConnection_id | InstructorConnectionCreatedAt | InstructorConnectionUpdatedAt | InstructorConnectionName | InstructorConnectionBio | InstructorConnectionEmail | InstructorConnectionWebsite | Lesson | createLessonPayload | updateLessonPayload | deleteLessonPayload | LessonConnection | LessonAggregator | LessonGroupBy | LessonConnection_id | LessonConnectionCreatedAt | LessonConnectionUpdatedAt | LessonConnectionTitle | LessonConnectionSlug | LessonConnectionDescription | LessonConnectionVideoUrl | LessonConnectionCourse | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Course | createCoursePayload | updateCoursePayload | deleteCoursePayload | CourseConnection | CourseAggregator | CourseGroupBy | CourseConnection_id | CourseConnectionCreatedAt | CourseConnectionUpdatedAt | CourseConnectionTitle | CourseConnectionDescription | CourseConnectionCover | CourseConnectionSlug | Instructor | createInstructorPayload | updateInstructorPayload | deleteInstructorPayload | InstructorConnection | InstructorAggregator | InstructorGroupBy | InstructorConnection_id | InstructorConnectionCreatedAt | InstructorConnectionUpdatedAt | InstructorConnectionName | InstructorConnectionBio | InstructorConnectionEmail | InstructorConnectionWebsite | Lesson | createLessonPayload | updateLessonPayload | deleteLessonPayload | LessonConnection | LessonAggregator | LessonGroupBy | LessonConnection_id | LessonConnectionCreatedAt | LessonConnectionUpdatedAt | LessonConnectionTitle | LessonConnectionSlug | LessonConnectionDescription | LessonConnectionVideoUrl | LessonConnectionCourse | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
 
 type Mutation {
   createCourse(input: createCourseInput): createCoursePayload
