@@ -6,8 +6,8 @@
   "main": "./server.js",
   "scripts": {
     "setup": "cd admin && npm run setup",
-    "start": "node server.js",
-    "strapi": "node_modules/strapi/bin/strapi.js",
+    "start": "env-cmd ./.env node server.js",
+    "strapi": "env-cmd ./.env node_modules/strapi/bin/strapi.js",
     "lint": "node_modules/.bin/eslint api/**/*.js config/**/*.js plugins/**/*.js",
     "postinstall": "node node_modules/strapi/lib/utils/post-install.js"
   },
@@ -19,6 +19,7 @@
     "eslint-plugin-react": "^7.7.0"
   },
   "dependencies": {
+    "env-cmd": "^8.0.2",
     "lodash": "^4.17.5",
     "slug": "^0.9.3",
     "strapi": "3.0.0-alpha.17",
