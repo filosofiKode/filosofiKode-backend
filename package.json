@@ -38,7 +38,7 @@
     }
   ],
   "strapi": {
-    "packageManager": "npm",
+    "packageManager": "yarn",
     "uuid": "3ab9d79c-4dd7-4b96-acbc-083b3c583685"
   },
   "engines": {
